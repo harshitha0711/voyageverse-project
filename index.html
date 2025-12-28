@@ -99,23 +99,39 @@
       <h3 class="section__subheader">TOP SELLING</h3>
       <h2 class="section__header">Top Destinations</h2>
       <div class="destination__list">
-        <div class="destination__item">
-          <img src="assets/destination-1.jpg" alt="Rome, Italy" />
-          <div class="destination__details">
-            <h4>Rome, Italy</h4>
-            <p>
-              Discover the timeless charm of Rome, where ancient ruins blend with modern life. 
-              From the Colosseum to the Vatican City, immerse yourself in history, art, and culture 
-              over a memorable 10-day trip.
-            </p>
-            <p>
-              <span><i class="ri-navigation-fill"></i></span> 10 Days Trip
-            </p>
-          </div>
-        </div>
+<div class="destination__item">
+
+  <img src="assets/destination-1.jpg" alt="Rome, Italy" />
+
+  <!-- ✅ NEW wrapper -->
+  <div class="destination__content">
+
+    <div class="destination__details">
+      <h4>Rome, Italy</h4>
+      <p>
+        Discover the timeless charm of Rome, where ancient ruins blend with
+        modern life. From the Colosseum to the Vatican City, immerse yourself
+        in history, art, and culture over a memorable 10-day trip.
+      </p>
+
+      <p class="trip-days">
+        <span><i class="ri-navigation-fill"></i></span> 10 Days Trip
+      </p>
+    </div>
+
+    <!-- ✅ Weather on RIGHT -->
+    <div class="weather-info" id="weather-rome">
+      Loading...
+    </div>
+
+  </div>
+
+</div>
+
     
         <div class="destination__item">
           <img src="assets/destination-2.jpg" alt="London, UK" />
+          <div class="destination__content">
           <div class="destination__details">
             <h4>London, UK</h4>
             <p>
@@ -123,14 +139,19 @@
               charm during a 12-day trip to London. From the historic Tower of London to 
               vibrant neighborhoods, there’s something for everyone.
             </p>
-            <p>
+            <p class="trip-days">
               <span><i class="ri-navigation-fill"></i></span> 12 Days Trip
             </p>
+            </div>
+              <div class="weather-info" id="weather-london">
+                  <p>Loading weather...</p>
+                </div>
           </div>
         </div>
     
         <div class="destination__item">
           <img src="assets/destination-3.jpg" alt="Full Europe" />
+          <div class="destination__content">
           <div class="destination__details">
             <h4>Full Europe</h4>
             <p>
@@ -138,9 +159,13 @@
               diverse cultures, and breathtaking landscapes. From Paris to Prague, this journey 
               is the ultimate experience for any traveler.
             </p>
-            <p>
+            <p class="trip-days">
               <span><i class="ri-navigation-fill"></i></span> 28 Days Trip
             </p>
+            </div>
+                  <div class="weather-info" id="weather-paris">
+                  <p>Loading weather...</p>
+          </div>
           </div>
         </div>
       </div>
@@ -227,7 +252,7 @@
               <a href="https://www.facebook.com/"><i class="ri-facebook-fill"></i></a>
             </li>
             <li>
-              <a href="https://www.instagram.com"><i class="ri-instagram-line"></i></a>
+              <a href="https://www.intsgram.com"><i class="ri-instagram-line"></i></a>
             </li>
           </ul>
           <h5>Discover our app</h5>
@@ -238,5 +263,11 @@
         </div>
       </div>
     </footer>
+    <!-- <script src="script.js"></script> -->
+    <script type="module" src="script.js"></script>
+
+</body>
+</html>
+
   </body>
 </html>

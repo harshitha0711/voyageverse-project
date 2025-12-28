@@ -180,6 +180,80 @@ nav {
   text-align: center;
 }
 
+/* .weather-info {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #444;
+  background: #f9f9f9;
+  padding: 8px;
+  border-radius: 8px;
+} */
+/* .weather-info {
+  min-width: 140px;
+  background: #f9f9f9;
+  border-radius: 12px;
+  padding: 10px;
+  text-align: center;
+  font-size: 13px;
+  line-height: 1.6;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+} */
+
+.weather-info {
+  width: fit-content;
+  min-width: 140px;
+  background: linear-gradient(
+    135deg,
+    rgba(31, 200, 206, 0.15),
+    rgba(255, 255, 255, 0.95)
+  );
+  border-radius: 14px;
+  padding: 10px 14px;
+  font-size: 13px;
+  line-height: 1.4;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+    /* 🔥 key fixes */
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Temperature */
+.weather-info .temp {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-dark);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.weather-info .condition {
+  font-size: 13px;
+  color: var(--text-light);
+  text-transform: capitalize;
+}
+
+/* Time */
+.weather-info .time {
+  font-size: 12px;
+  color: var(--text-light);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* .trip-days {
+  white-space: nowrap;
+  font-weight: 500;
+  color: var(--text-dark);
+} */
+
+.trip-days {
+  font-weight: 500;
+  margin-top: 10px;
+}
+
 .header__content p {
   margin-bottom: 2rem;
   line-height: 2rem;
@@ -247,10 +321,15 @@ nav {
   gap: 2rem;
 }
 
-.destination__item {
+/* .destination__item {
   display: flex;
   align-items: flex-start;
   gap: 1.5rem;
+} */
+.destination__item {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
 }
 
 .destination__item img {
@@ -267,6 +346,13 @@ nav {
 .destination__details h4 {
   font-size: 1.5rem;
   margin-bottom: 0.5rem;
+}
+
+.destination__content {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  width: 100%;
 }
 
 .destination__details p {
@@ -585,4 +671,79 @@ nav {
   .destination__grid {
     gap: 2rem;
   }
+  @media (max-width: 768px) {
+
+  /* NAVBAR */
+  nav {
+    padding: 1rem;
+  }
+
+  .nav__links {
+    display: none;
+    flex-direction: column;
+    background: white;
+    position: absolute;
+    top: 70px;
+    right: 10px;
+    width: 200px;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  }
+
+  .nav__links.show {
+    display: flex;
+  }
+
+  .nav__menu__btn {
+    display: block;
+    font-size: 26px;
+    cursor: pointer;
+  }
+
+  .nav-button {
+    display: none;
+  }
+
+  /* HEADER */
+  .header__container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .header__image img {
+    width: 100%;
+  }
+
+  /* SERVICES */
+  .service__grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* DESTINATIONS */
+  .destination__content {
+    flex-direction: column;
+  }
+
+  .weather-info {
+    margin-top: 10px;
+    text-align: left;
+  }
+
+  /* TRIP SECTION */
+  .trip-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .trip-image img {
+    width: 100%;
+  }
+
+  /* FOOTER */
+  .footer__container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+}
+
 }
