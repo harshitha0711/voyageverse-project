@@ -1,6 +1,7 @@
+
 # VoyageVerse 🌍✈️
 
-A full-stack travel booking and discovery web application built with **Node.js**, **Express**, **MongoDB**, and vanilla **HTML/CSS/JavaScript** — featuring live weather, trip wishlist management, user reviews, and secure JWT-based authentication.
+A full-stack travel booking and discovery web application built with the **MERN stack** — featuring live weather forecasts, trip booking, wishlist management, user reviews, and secure JWT-based authentication.
 
 ---
 
@@ -12,7 +13,6 @@ A full-stack travel booking and discovery web application built with **Node.js**
 - ⭐ **Reviews & Ratings** — Leave and browse reviews for destinations
 - 🌦️ **Live Weather Widget** — Real-time weather data for top destinations powered by OpenWeatherMap API
 - 📱 **Responsive Design** — Fully mobile-friendly layout that adapts across all screen sizes
-- 🔒 **Password Strength Indicator** — Real-time feedback on registration page
 - 🛡️ **Protected API Routes** — All booking, wishlist, and review routes require authentication
 
 ---
@@ -21,57 +21,12 @@ A full-stack travel booking and discovery web application built with **Node.js**
 
 | Layer | Technology |
 |-------|-----------|
-| Frontend | HTML, CSS, Vanilla JavaScript |
+| Frontend | React 19, React Router DOM, Vite |
 | Backend | Node.js, Express.js |
 | Database | MongoDB (Mongoose ODM) |
 | Auth | JWT (JSON Web Tokens) + bcryptjs |
 | External API | OpenWeatherMap REST API |
-| Styling | Poppins font, CSS Custom Properties |
-
----
-
-## Getting Started
-
-### Prerequisites
-- [Node.js](https://nodejs.org/) v18+
-- [MongoDB](https://www.mongodb.com/) — local install or a free [MongoDB Atlas](https://www.mongodb.com/atlas) cluster
-
-### 1. Clone the repository
-```bash
-git clone <your-repo-url>
-cd voyageverse-project-2
-```
-
-### 2. Install dependencies
-```bash
-npm install
-```
-
-### 3. Set up environment variables
-
-Create a `.env` file in the root directory:
-
-```env
-PORT=5000
-MONGO_URI=mongodb+srv://<username>:<password>@cluster0.xxxxx.mongodb.net/voyageverse
-JWT_SECRET=<your-strong-random-secret>
-OPENWEATHER_API_KEY=<your-openweathermap-api-key>
-```
-
-> **IMPORTANT:** Make sure your `MONGO_URI` ends with a database name (e.g. `/voyageverse`). Without it, Mongoose may fail to connect properly.
-
-- **MONGO_URI** — Get this from MongoDB Atlas → Connect → Drivers, or use `mongodb://localhost:27017/voyageverse` for a local instance.
-- **JWT_SECRET** — Generate one via: `node -e "console.log(require('crypto').randomBytes(64).toString('hex'))"`
-- **OPENWEATHER_API_KEY** — Get a free key from [openweathermap.org](https://openweathermap.org/api)
-
-### 4. Run the development server
-```bash
-npm run dev
-```
-
-The app will be available at **http://localhost:5000**
-
-> **Note:** If you're running your frontend separately (e.g. with VS Code Live Server on port 5500), make sure your `fetch()` calls use the full URL: `http://localhost:5000/api/...` — not relative paths.
+| Styling | CSS Custom Properties, Inter font |
 
 ---
 
@@ -79,33 +34,112 @@ The app will be available at **http://localhost:5000**
 
 ```
 voyageverse-project-2/
+├── client/                        # React frontend (Vite)
+│   ├── src/
+│   │   ├── context/
+│   │   │   └── AuthContext.jsx    # Global auth state
+│   │   ├── components/
+│   │   │   ├── Navbar.jsx
+│   │   │   └── WeatherWidget.jsx
+│   │   ├── pages/
+│   │   │   ├── Home.jsx           # Bookings, Wishlist, Reviews
+│   │   │   ├── Login.jsx
+│   │   │   └── Register.jsx
+│   │   ├── api.js                 # Centralized API fetch helper
+│   │   ├── App.jsx                # Routes setup
+│   │   ├── main.jsx               # React entry point
+│   │   └── index.css
+│   ├── index.html
+│   ├── vite.config.js             # Vite + proxy config
+│   └── package.json
+│
 ├── config/
-│   └── db.js                # MongoDB connection setup
+│   └── db.js                      # MongoDB connection
 ├── middleware/
-│   └── auth.js              # JWT protect middleware
+│   └── auth.js                    # JWT protect middleware
 ├── models/
-│   ├── User.js              # User schema (name, email, hashed password)
-│   ├── Booking.js           # Booking schema
-│   ├── Review.js            # Review/rating schema
-│   └── Wishlist.js          # Wishlist schema
+│   ├── User.js
+│   ├── Booking.js
+│   ├── Review.js
+│   └── Wishlist.js
 ├── routes/
-│   ├── auth.js              # /api/auth — register, login, logout, me
-│   ├── bookings.js          # /api/bookings — CRUD
-│   ├── reviews.js           # /api/reviews — CRUD
-│   ├── wishlist.js          # /api/wishlist — add/remove/view
-│   └── weather.js           # /api/weather — live weather proxy
-├── assets/                  # Images and icons
-├── index.html               # Main landing page
-├── signin.html              # Sign In page
-├── register.html            # Register page
-├── styles.css               # Main stylesheet
-├── script.js                # Main frontend logic (auth + bookings)
-├── signin.js                # Sign-in form handler
-├── register.js              # Register form handler
-├── server.js                # Express app entry point
-├── .env                     # Environment variables (not committed)
+│   ├── auth.js                    # /api/auth
+│   ├── bookings.js                # /api/bookings
+│   ├── reviews.js                 # /api/reviews
+│   ├── wishlist.js                # /api/wishlist
+│   └── weather.js                 # /api/weather
+├── server.js                      # Express entry point
+├── .env                           # Environment variables (not committed)
 └── package.json
 ```
+
+---
+
+## Getting Started
+
+### Prerequisites
+- [Node.js](https://nodejs.org/) v18+
+- A free [MongoDB Atlas](https://www.mongodb.com/atlas) cluster
+
+### 1. Clone the repository
+```bash
+git clone <your-repo-url>
+cd voyageverse-project-2
+```
+
+### 2. Set up environment variables
+
+Create a `.env` file in the **root** directory:
+
+```env
+PORT=5000
+MONGO_URI=mongodb+srv://<username>:<password>@cluster0.xxxxx.mongodb.net/
+JWT_SECRET=<your-strong-random-secret>
+OPENWEATHER_API_KEY=<your-openweathermap-api-key>
+```
+ 
+> On MongoDB Atlas → Network Access → set IP to `0.0.0.0/0` to allow access from anywhere.
+
+### 3. Install dependencies for both backend and frontend
+
+```bash
+# In root folder (backend)
+npm install
+
+# In client folder (frontend)
+cd client
+npm install
+cd ..
+```
+
+### 4. Run the app — two terminals at the same time
+
+**Terminal 1 — Backend** (from root folder):
+```bash
+npm run dev
+```
+You should see:
+```
+Server running on port 5000 in development mode
+MongoDB Connected...
+```
+
+**Terminal 2 — Frontend** (from client folder):
+```bash
+cd client
+npm run dev
+```
+You should see:
+```
+VITE ready on http://localhost:5173
+```
+
+### 5. Open the app
+
+Visit **http://localhost:5173** in your browser.
+
+> `localhost:5000` → backend API only  
+> `localhost:5173` → your React frontend ✅
 
 ---
 
@@ -125,14 +159,14 @@ voyageverse-project-2/
 | GET | `/api/bookings` | Get all bookings for current user |
 | POST | `/api/bookings` | Create a new booking |
 | PUT | `/api/bookings/:id` | Update a booking |
-| DELETE | `/api/bookings/:id` | Cancel/delete a booking |
+| DELETE | `/api/bookings/:id` | Cancel a booking |
 
 ### Wishlist 🔒 (`/api/wishlist`)
 | Method | Route | Description |
 |--------|-------|-------------|
 | GET | `/api/wishlist` | Get current user's wishlist |
-| POST | `/api/wishlist` | Add a destination to wishlist |
-| DELETE | `/api/wishlist/:id` | Remove item from wishlist |
+| POST | `/api/wishlist` | Add a destination |
+| DELETE | `/api/wishlist/:id` | Remove a destination |
 
 ### Reviews 🔒 (`/api/reviews`)
 | Method | Route | Description |
@@ -144,16 +178,19 @@ voyageverse-project-2/
 ### Weather (`/api/weather`)
 | Method | Route | Description |
 |--------|-------|-------------|
-| GET | `/api/weather` | Fetch live weather for a destination |
+| GET | `/api/weather` | Fetch live weather for a city |
 
 ---
 
 ## Common Issues
 
-**"Failed to fetch" on Sign Up / Sign In**
-- Make sure the server is running (`npm run dev`) and you see `Server running on port 5000` in the terminal.
-- Ensure your `MONGO_URI` includes the database name at the end: `.../voyageverse`.
-- If using Live Server (port 5500), update your `fetch()` calls to use `http://localhost:5000/api/...` instead of relative paths.
+**MongoDB connection error**
+- Go to Atlas → Network Access → set IP to `0.0.0.0/0`
+- Make sure `MONGO_URI` in `.env` ends with `/voyageverse`
+
+**Signup / Login not working**
+- Make sure both terminals are running simultaneously
+- Open the app at `http://localhost:5173`, not `localhost:5000`
 
 ---
 
